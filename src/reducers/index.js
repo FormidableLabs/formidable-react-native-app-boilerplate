@@ -1,21 +1,18 @@
 /* @flow */
 
 import { combineReducers } from "redux";
-import {
-  REQUEST_DATA,
-  RECEIVE_DATA
-} from "../actions";
+import * as types from "../actions";
 
 const data = (state = {
   isFetching: false,
   message: ""
 }, action) => {
   switch (action.type) {
-  case REQUEST_DATA:
+  case types.REQUEST_DATA:
     return Object.assign({}, state, {
       isFetching: true
     });
-  case RECEIVE_DATA:
+  case types.RECEIVE_DATA:
     return Object.assign({}, state, {
       isFetching: false,
       message: action.data.message
