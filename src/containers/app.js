@@ -1,12 +1,13 @@
 /* @flow */
+/*eslint-disable prefer-const */
 
 import React from "react-native";
 import { connect } from "react-redux/native";
 import { fetchData } from "../actions";
 
-const {
+let {
   Text,
-  View
+  ScrollView
 } = React;
 
 class App extends React.Component {
@@ -15,9 +16,15 @@ class App extends React.Component {
   }
   render() {
     return (
-      <View style={{flex: 1, paddingTop: 64}}>
+      <ScrollView
+        style={{flex: 1}}
+        contentContainerStyle={{
+          justifyContent: "center",
+          alignItems: "center"
+        }}
+      >
         <Text>{this.props.isFetching ? "Loading" : this.props.message}</Text>
-      </View>
+      </ScrollView>
     );
   }
 }

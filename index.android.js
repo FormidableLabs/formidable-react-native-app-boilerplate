@@ -619,9 +619,9 @@
 
 	var _storeConfigureStore2 = _interopRequireDefault(_storeConfigureStore);
 
-	var _componentsNavigator = __webpack_require__(133);
+	var _componentsScene = __webpack_require__(133);
 
-	var _componentsNavigator2 = _interopRequireDefault(_componentsNavigator);
+	var _componentsScene2 = _interopRequireDefault(_componentsScene);
 
 	var store = (0, _storeConfigureStore2["default"])();
 
@@ -641,7 +641,7 @@
 	        _reactReduxNative.Provider,
 	        { store: store },
 	        function () {
-	          return _reactNative2["default"].createElement(_componentsNavigator2["default"], null);
+	          return _reactNative2["default"].createElement(_componentsScene2["default"], null);
 	        }
 	      );
 	    }
@@ -2564,7 +2564,7 @@
 	var data = function data(state, action) {
 	  if (state === undefined) state = {
 	    isFetching: false,
-	    message: []
+	    message: ""
 	  };
 
 	  switch (action.type) {
@@ -2731,6 +2731,9 @@
 /* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
+	/*eslint-disable prefer-const */
+
 	"use strict";
 
 	var _get = __webpack_require__(71)["default"];
@@ -2740,6 +2743,8 @@
 	var _createClass = __webpack_require__(96)["default"];
 
 	var _classCallCheck = __webpack_require__(99)["default"];
+
+	var _extends = __webpack_require__(134)["default"];
 
 	var _interopRequireDefault = __webpack_require__(1)["default"];
 
@@ -2751,26 +2756,51 @@
 
 	var _reactNative2 = _interopRequireDefault(_reactNative);
 
-	var _containersApp = __webpack_require__(134);
+	var _containersApp = __webpack_require__(135);
 
 	var _containersApp2 = _interopRequireDefault(_containersApp);
 
-	var NavigatorIOS = _reactNative2["default"].NavigatorIOS;
+	var _navigationBar = __webpack_require__(136);
 
-	var Navigator = (function (_React$Component) {
-	  _inherits(Navigator, _React$Component);
+	var _navigationBar2 = _interopRequireDefault(_navigationBar);
 
-	  function Navigator() {
-	    _classCallCheck(this, Navigator);
+	var Navigator = _reactNative2["default"].Navigator;
+	var View = _reactNative2["default"].View;
 
-	    _get(Object.getPrototypeOf(Navigator.prototype), "constructor", this).apply(this, arguments);
+	var Scene = (function (_React$Component) {
+	  _inherits(Scene, _React$Component);
+
+	  function Scene() {
+	    _classCallCheck(this, Scene);
+
+	    _get(Object.getPrototypeOf(Scene.prototype), "constructor", this).apply(this, arguments);
 	  }
 
-	  _createClass(Navigator, [{
+	  _createClass(Scene, [{
+	    key: "renderScene",
+	    value: function renderScene(route, navigator) {
+	      var Component = route.component;
+	      return _reactNative2["default"].createElement(
+	        View,
+	        { style: { flex: 1 } },
+	        _reactNative2["default"].createElement(_navigationBar2["default"], {
+	          backgroundStyle: { backgroundColor: "#eee" },
+	          navigator: navigator,
+	          route: route,
+	          title: route.title,
+	          titleColor: "#333" }),
+	        _reactNative2["default"].createElement(Component, _extends({
+	          navigator: navigator,
+	          route: route
+	        }, route.passProps))
+	      );
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
-	      return _reactNative2["default"].createElement(NavigatorIOS, {
+	      return _reactNative2["default"].createElement(Navigator, {
 	        style: { flex: 1 },
+	        renderScene: this.renderScene,
 	        initialRoute: {
 	          component: _containersApp2["default"],
 	          title: "Starter App"
@@ -2779,15 +2809,42 @@
 	    }
 	  }]);
 
-	  return Navigator;
+	  return Scene;
 	})(_reactNative2["default"].Component);
 
-	exports["default"] = Navigator;
+	exports["default"] = Scene;
 	module.exports = exports["default"];
 
 /***/ },
 /* 134 */
 /***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _Object$assign = __webpack_require__(125)["default"];
+
+	exports["default"] = _Object$assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];
+
+	    for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }
+
+	  return target;
+	};
+
+	exports.__esModule = true;
+
+/***/ },
+/* 135 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/*eslint-disable prefer-const */
 
 	"use strict";
 
@@ -2814,7 +2871,7 @@
 	var _actions = __webpack_require__(132);
 
 	var Text = _reactNative2["default"].Text;
-	var View = _reactNative2["default"].View;
+	var ScrollView = _reactNative2["default"].ScrollView;
 
 	var App = (function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -2834,8 +2891,13 @@
 	    key: "render",
 	    value: function render() {
 	      return _reactNative2["default"].createElement(
-	        View,
-	        { style: { flex: 1, paddingTop: 64 } },
+	        ScrollView,
+	        {
+	          style: { flex: 1 },
+	          contentContainerStyle: {
+	            justifyContent: 'center',
+	            alignItems: 'center'
+	          } },
 	        _reactNative2["default"].createElement(
 	          Text,
 	          null,
@@ -2866,6 +2928,273 @@
 	    message: state.data.message
 	  };
 	})(App);
+	module.exports = exports["default"];
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/*eslint-disable prefer-const */
+
+	"use strict";
+
+	var _get = __webpack_require__(71)["default"];
+
+	var _inherits = __webpack_require__(85)["default"];
+
+	var _createClass = __webpack_require__(96)["default"];
+
+	var _classCallCheck = __webpack_require__(99)["default"];
+
+	var _interopRequireDefault = __webpack_require__(1)["default"];
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _reactNative = __webpack_require__(2);
+
+	var _reactNative2 = _interopRequireDefault(_reactNative);
+
+	var StatusBarIOS = _reactNative2["default"].StatusBarIOS;
+	var StyleSheet = _reactNative2["default"].StyleSheet;
+	var Text = _reactNative2["default"].Text;
+	var TouchableOpacity = _reactNative2["default"].TouchableOpacity;
+	var View = _reactNative2["default"].View;
+
+	var NAV_BAR_HEIGHT = 44;
+	var STATUS_BAR_HEIGHT = 20;
+	var NAV_HEIGHT = NAV_BAR_HEIGHT + STATUS_BAR_HEIGHT;
+
+	var styles = StyleSheet.create({
+	  navBarContainer: {
+	    height: NAV_HEIGHT,
+	    backgroundColor: "white",
+	    paddingBottom: 5,
+	    borderBottomColor: "rgba(0, 0, 0, 0.5)",
+	    borderBottomWidth: 1 / _reactNative2["default"].PixelRatio.get()
+	  },
+	  navBar: {
+	    height: NAV_HEIGHT,
+	    flexDirection: "row",
+	    justifyContent: "space-between"
+	  },
+	  customTitle: {
+	    position: "absolute",
+	    alignItems: "center",
+	    bottom: 5,
+	    left: 0,
+	    right: 0
+	  },
+	  navBarText: {
+	    fontSize: 16,
+	    marginVertical: 10,
+	    flex: 2,
+	    textAlign: "center"
+	  },
+	  navBarTitleText: {
+	    color: "#373e4d",
+	    fontWeight: "500",
+	    position: "absolute",
+	    left: 0,
+	    right: 0,
+	    bottom: 15
+	  },
+	  navBarLeftButton: {
+	    paddingLeft: 10,
+	    marginVertical: 20
+	  },
+	  navBarRightButton: {
+	    marginVertical: 20,
+	    paddingRight: 10
+	  },
+	  navBarButtonText: {
+	    color: "#5890ff"
+	  }
+	});
+
+	var NavigationBar = (function (_React$Component) {
+	  _inherits(NavigationBar, _React$Component);
+
+	  function NavigationBar() {
+	    _classCallCheck(this, NavigationBar);
+
+	    _get(Object.getPrototypeOf(NavigationBar.prototype), "constructor", this).apply(this, arguments);
+	  }
+
+	  _createClass(NavigationBar, [{
+	    key: "prevButtonShouldBeHidden",
+	    value: function prevButtonShouldBeHidden() {
+	      var _props = this.props;
+	      var onPrev = _props.onPrev;
+	      var hidePrev = _props.hidePrev;
+	      var navigator = _props.navigator;
+
+	      var getCurrentRoutes = navigator.getCurrentRoutes;
+
+	      return hidePrev || getCurrentRoutes && getCurrentRoutes().length <= 1 && !onPrev;
+	    }
+	  }, {
+	    key: "getLeftButtonElement",
+	    value: function getLeftButtonElement() {
+	      var _props2 = this.props;
+	      var onPrev = _props2.onPrev;
+	      var prevTitle = _props2.prevTitle;
+	      var navigator = _props2.navigator;
+	      var route = _props2.route;
+	      var buttonsColor = _props2.buttonsColor;
+	      var customPrev = _props2.customPrev;
+
+	      if (customPrev) {
+	        return _reactNative2["default"].cloneElement(customPrev, { navigator: navigator, route: route });
+	      }
+
+	      if (this.prevButtonShouldBeHidden()) {
+	        return _reactNative2["default"].createElement(View, { style: styles.navBarLeftButton });
+	      }
+
+	      var customStyle = buttonsColor ? { color: buttonsColor } : {};
+
+	      var onPress = navigator.pop;
+
+	      if (onPrev) {
+	        onPress = function () {
+	          return onPrev(navigator, route);
+	        };
+	      }
+
+	      return _reactNative2["default"].createElement(
+	        TouchableOpacity,
+	        { onPress: onPress },
+	        _reactNative2["default"].createElement(
+	          View,
+	          { style: styles.navBarLeftButton },
+	          _reactNative2["default"].createElement(
+	            Text,
+	            { style: [styles.navBarText, styles.navBarButtonText, customStyle] },
+	            prevTitle || "Back"
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: "getTitleElement",
+	    value: function getTitleElement() {
+	      var _props3 = this.props;
+	      var title = _props3.title;
+	      var titleColor = _props3.titleColor;
+	      var customTitle = _props3.customTitle;
+	      var navigator = _props3.navigator;
+	      var route = _props3.route;
+
+	      if (customTitle) {
+	        return _reactNative2["default"].createElement(
+	          View,
+	          { style: styles.customTitle },
+	          _reactNative2["default"].cloneElement(customTitle, { navigator: navigator, route: route })
+	        );
+	      }
+
+	      if (title && !title.length) {
+	        return true;
+	      }
+
+	      var titleStyle = [styles.navBarText, styles.navBarTitleText, { color: titleColor }];
+
+	      return _reactNative2["default"].createElement(
+	        Text,
+	        { style: titleStyle },
+	        title
+	      );
+	    }
+	  }, {
+	    key: "getRightButtonElement",
+	    value: function getRightButtonElement() {
+	      var _props4 = this.props;
+	      var onNext = _props4.onNext;
+	      var nextTitle = _props4.nextTitle;
+	      var navigator = _props4.navigator;
+	      var route = _props4.route;
+	      var buttonsColor = _props4.buttonsColor;
+	      var customNext = _props4.customNext;
+
+	      if (customNext) {
+	        return _reactNative2["default"].cloneElement(customNext, { navigator: navigator, route: route });
+	      }
+
+	      if (!onNext) {
+	        return _reactNative2["default"].createElement(Text, { style: styles.navBarRightButton });
+	      }
+
+	      var customStyle = buttonsColor ? { color: buttonsColor } : {};
+
+	      return _reactNative2["default"].createElement(
+	        TouchableOpacity,
+	        { onPress: function () {
+	            return onNext(navigator, route);
+	          } },
+	        _reactNative2["default"].createElement(
+	          View,
+	          { style: styles.navBarRightButton },
+	          _reactNative2["default"].createElement(
+	            Text,
+	            { style: [styles.navBarText, styles.navBarButtonText, customStyle] },
+	            nextTitle || "Next"
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      if (this.props.statusBar === "lightContent") {
+	        StatusBarIOS.setStyle("light-content", false);
+	      } else if (this.props.statusBar === "default") {
+	        StatusBarIOS.setStyle("default", false);
+	      }
+
+	      var _props5 = this.props;
+	      var style = _props5.style;
+	      var backgroundStyle = _props5.backgroundStyle;
+
+	      return _reactNative2["default"].createElement(
+	        View,
+	        { style: [styles.navBarContainer, backgroundStyle] },
+	        _reactNative2["default"].createElement(
+	          View,
+	          { style: [styles.navBar, style] },
+	          this.getTitleElement(),
+	          this.getLeftButtonElement(),
+	          this.getRightButtonElement()
+	        )
+	      );
+	    }
+	  }]);
+
+	  return NavigationBar;
+	})(_reactNative2["default"].Component);
+
+	NavigationBar.propTypes = {
+	  backgroundStyle: _reactNative2["default"].PropTypes.object,
+	  buttonsColor: _reactNative2["default"].PropTypes.string,
+	  customNext: _reactNative2["default"].PropTypes.node,
+	  customPrev: _reactNative2["default"].PropTypes.node,
+	  customTitle: _reactNative2["default"].PropTypes.node,
+	  hidePrev: _reactNative2["default"].PropTypes.bool,
+	  navigator: _reactNative2["default"].PropTypes.object,
+	  nextTitle: _reactNative2["default"].PropTypes.string,
+	  onNext: _reactNative2["default"].PropTypes.func,
+	  onPrev: _reactNative2["default"].PropTypes.func,
+	  prevTitle: _reactNative2["default"].PropTypes.string,
+	  route: _reactNative2["default"].PropTypes.object,
+	  statusBar: _reactNative2["default"].PropTypes.string,
+	  style: _reactNative2["default"].PropTypes.object,
+	  title: _reactNative2["default"].PropTypes.string,
+	  titleColor: _reactNative2["default"].PropTypes.string
+	};
+
+	exports["default"] = NavigationBar;
 	module.exports = exports["default"];
 
 /***/ }

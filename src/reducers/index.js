@@ -8,7 +8,7 @@ import {
 
 const data = (state = {
   isFetching: false,
-  message: []
+  message: ""
 }, action) => {
   switch (action.type) {
   case REQUEST_DATA:
