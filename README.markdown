@@ -1,7 +1,17 @@
 ##formidable-react-native-app-boilerplate
 > React Native / Redux / Babel boilerplate.
 
-###Getting Started
+#### Features
+
+- Babel/ES2015 support
+- ES6 Class support
+- Redux with Async actions via `redux-thunk` and console logging via `redux-logger`
+- Navigator & NavigationBar
+- Android support
+- ESLint preconfigured with settings from [eslint-config-defaults](https://github.com/walmartlabs/eslint-config-defaults)
+- Flowtype annotations preconfigured
+
+#### Getting Started
 
 - Make sure XCode is installed.
 
@@ -11,4 +21,22 @@
 
 - Open XCode and open `/ios/App.xcodeproj`
 
-- Inside of XCode, run the project.
+#### Running IOS
+
+Simply run the project in XCode
+
+#### Running Android
+
+From your command line run `react-native run-android`
+
+#### Linting
+
+To lint your code using [ESLint](http://eslint.org/) run `npm run lint`
+
+#### Type Checking
+
+To type check your code using [Flow](flowtype.org), first [install Flow](http://flowtype.org/docs/getting-started.html#_) and then run `npm run flow`
+
+#### Troubleshooting
+
+If you have any trouble with package caching due to `.babelrc`, run `rm -fr $TMPDIR/react-*`
