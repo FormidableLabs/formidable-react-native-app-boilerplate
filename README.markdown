@@ -35,7 +35,7 @@ To lint your code using [ESLint](http://eslint.org/) run `npm run lint`
 
 #### Type Checking
 
-To type check your code using [Flow](flowtype.org), first [install Flow](http://flowtype.org/docs/getting-started.html#_) and then run `npm run flow`
+To type check your code using [Flow](http://flowtype.org), first [install Flow](http://flowtype.org/docs/getting-started.html#_) and then run `npm run flow`
 
 #### Troubleshooting
 
