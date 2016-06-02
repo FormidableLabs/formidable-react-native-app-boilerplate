@@ -1,15 +1,16 @@
 /* @flow */
 /*eslint-disable prefer-const */
 
-import React from "react-native";
+import React from "react";
 
-let {
+import {
+  PixelRatio,
   StatusBarIOS,
   StyleSheet,
   Text,
   TouchableOpacity,
   View
-} = React;
+} from 'react-native';
 
 const NAV_BAR_HEIGHT = 44;
 const STATUS_BAR_HEIGHT = 20;
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingBottom: 5,
     borderBottomColor: "rgba(0, 0, 0, 0.5)",
-    borderBottomWidth: 1 / React.PixelRatio.get()
+    borderBottomWidth: 1 / PixelRatio.get()
   },
   navBar: {
     height: NAV_HEIGHT,

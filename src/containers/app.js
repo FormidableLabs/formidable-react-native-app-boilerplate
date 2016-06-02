@@ -1,14 +1,14 @@
 /* @flow */
 /*eslint-disable prefer-const */
 
-import React from "react-native";
-import { connect } from "react-redux/native";
+import React from "react";
+import { connect } from "react-redux";
 import { fetchData } from "../actions";
 
-let {
+import {
   Text,
   ScrollView
-} = React;
+} from 'react-native';
 
 class App extends React.Component {
   componentDidMount() {
