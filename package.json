@@ -22,6 +22,7 @@
     "eslint": "^1.10.3",
     "eslint-config-defaults": "^9.0.0",
     "eslint-plugin-filenames": "^0.2.0",
-    "eslint-plugin-react": "^5.2.2"
+    "eslint-plugin-react": "^5.2.2",
+    "flow-bin": "^0.25.0"
   }
 }

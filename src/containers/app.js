@@ -1,5 +1,4 @@
 /* @flow */
-/*eslint-disable prefer-const */
 
 import React from "react";
 import { connect } from "react-redux";
@@ -11,9 +10,23 @@ import {
 } from "react-native";
 
 class App extends React.Component {
+
+  static propTypes = {
+    dispatch: React.PropTypes.func,
+    message: React.PropTypes.string,
+    isFetching: React.PropTypes.bool
+  };
+
+  static defaultProps = {
+    dispatch: () => {},
+    isFetching: false,
+    message: ""
+  };
+
   componentDidMount() {
     this.props.dispatch(fetchData());
   }
+
   render() {
     return (
       <ScrollView
@@ -28,18 +41,6 @@ class App extends React.Component {
     );
   }
 }
-
-App.propTypes = {
-  dispatch: React.PropTypes.func,
-  message: React.PropTypes.string,
-  isFetching: React.PropTypes.bool
-};
-
-App.defaultProps = {
-  dispatch: () => {},
-  isFetching: false,
-  message: ""
-};
 
 export default connect((state) => ({
   isFetching: state.data.isFetching,

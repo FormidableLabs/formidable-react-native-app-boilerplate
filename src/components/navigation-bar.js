@@ -64,6 +64,25 @@ const styles = StyleSheet.create({
 });
 
 class NavigationBar extends React.Component {
+  static propTypes = {
+    backgroundStyle: React.PropTypes.object,
+    buttonsColor: React.PropTypes.string,
+    customNext: React.PropTypes.node,
+    customPrev: React.PropTypes.node,
+    customTitle: React.PropTypes.node,
+    hidePrev: React.PropTypes.bool,
+    navigator: React.PropTypes.object,
+    nextTitle: React.PropTypes.string,
+    onNext: React.PropTypes.func,
+    onPrev: React.PropTypes.func,
+    prevTitle: React.PropTypes.string,
+    route: React.PropTypes.object,
+    statusBar: React.PropTypes.string,
+    style: React.PropTypes.object,
+    title: React.PropTypes.string,
+    titleColor: React.PropTypes.string
+  };
+
   prevButtonShouldBeHidden(): Boolean {
     let {
       onPrev,
@@ -78,6 +97,7 @@ class NavigationBar extends React.Component {
       (getCurrentRoutes && getCurrentRoutes().length <= 1 && !onPrev)
     );
   }
+
   getLeftButtonElement() {
     let {
       onPrev,
@@ -114,6 +134,7 @@ class NavigationBar extends React.Component {
       </TouchableOpacity>
     );
   }
+
   getTitleElement() {
     let {
       title,
@@ -147,6 +168,7 @@ class NavigationBar extends React.Component {
       </Text>
     );
   }
+
   getRightButtonElement() {
     let {
       onNext,
@@ -177,6 +199,7 @@ class NavigationBar extends React.Component {
       </TouchableOpacity>
     );
   }
+
   render() {
     if (this.props.statusBar === "lightContent") {
       StatusBarIOS.setStyle("light-content", false);
@@ -197,24 +220,5 @@ class NavigationBar extends React.Component {
     );
   }
 }
-
-NavigationBar.propTypes = {
-  backgroundStyle: React.PropTypes.object,
-  buttonsColor: React.PropTypes.string,
-  customNext: React.PropTypes.node,
-  customPrev: React.PropTypes.node,
-  customTitle: React.PropTypes.node,
-  hidePrev: React.PropTypes.bool,
-  navigator: React.PropTypes.object,
-  nextTitle: React.PropTypes.string,
-  onNext: React.PropTypes.func,
-  onPrev: React.PropTypes.func,
-  prevTitle: React.PropTypes.string,
-  route: React.PropTypes.object,
-  statusBar: React.PropTypes.string,
-  style: React.PropTypes.object,
-  title: React.PropTypes.string,
-  titleColor: React.PropTypes.string
-};
 
 export default NavigationBar;
