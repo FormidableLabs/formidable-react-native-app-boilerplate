@@ -7,14 +7,12 @@ import Scene from "../components/scene";
 
 const store = configureStore();
 
-class Root extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Scene />
-      </Provider>
-    );
-  }
-}
+const Root = () => {
+  return (
+    <Provider store={store}>
+      <Scene />
+    </Provider>
+  );
+};
 
 export default Root;

@@ -3,6 +3,7 @@
 
 export const REQUEST_DATA = "REQUEST_DATA";
 export const RECEIVE_DATA = "RECEIVE_DATA";
+const FETCH_TIMEOUT = 300;
 
 export const requestData = (): Object => {
   return {
@@ -23,6 +24,6 @@ export const fetchData = (): Function => {
     return setTimeout(() => {
       const data = {message: "Hello"};
       dispatch(receiveData(data));
-    }, 300);
+    }, FETCH_TIMEOUT);
   };
 };

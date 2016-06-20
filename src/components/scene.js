@@ -8,7 +8,7 @@ import NavigationBar from "./navigation-bar";
 import {
   Navigator,
   View
-} from 'react-native';
+} from "react-native";
 
 class Scene extends React.Component {
   renderScene(route: Object, navigator: Object) {

@@ -8,7 +8,7 @@ import { fetchData } from "../actions";
 import {
   Text,
   ScrollView
-} from 'react-native';
+} from "react-native";
 
 class App extends React.Component {
   componentDidMount() {
