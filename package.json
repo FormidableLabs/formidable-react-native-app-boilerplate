@@ -8,19 +8,20 @@
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "lodash": "^3.10.1",
-    "react": "15.0.2",
-    "react-native": "^0.26.2",
-    "react-redux": "^4.4.5"
-  },
-  "devDependencies": {
-    "concurrently": "^2.1.0",
-    "eslint": "^1.6.0",
-    "eslint-config-defaults": "^7.0.1",
-    "eslint-plugin-filenames": "^0.1.2",
-    "eslint-plugin-react": "^3.5.1",
+    "lodash": "^4.13.1",
+    "react": "^15.1.0",
+    "react-native": "^0.27.2",
+    "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-logger": "^2.0.4",
     "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "concurrently": "^2.1.0",
+    "eslint": "^1.10.3",
+    "eslint-config-defaults": "^9.0.0",
+    "eslint-plugin-filenames": "^0.2.0",
+    "eslint-plugin-react": "^5.2.2"
   }
 }
