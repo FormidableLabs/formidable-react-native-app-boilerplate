@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "flow": "flow check",
+    "test": "mocha --opts test/mocha.opts src/**/__tests__/*.test.js",
     "lint": "eslint --ext .js,.jsx src",
     "start": "node_modules/react-native/packager/packager.sh"
   },
@@ -18,11 +19,19 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
+    "chai": "^3.5.0",
     "concurrently": "^2.1.0",
+    "enzyme": "^2.3.0",
     "eslint": "^1.10.3",
     "eslint-config-defaults": "^9.0.0",
     "eslint-plugin-filenames": "^0.2.0",
     "eslint-plugin-react": "^5.2.2",
-    "flow-bin": "^0.25.0"
+    "eslint-plugin-react-native": "^1.1.0-beta",
+    "flow-bin": "^0.25.0",
+    "mocha": "^2.5.3",
+    "react-addons-test-utils": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "sinon": "^1.17.4",
+    "xunit-file": "0.0.11"
   }
 }

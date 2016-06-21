@@ -1,3 +1,22 @@
 ---
 extends:
   - "defaults/configurations/walmart/es6-react-test"
+plugins:
+  - "react"
+  - "react-native"
+globals:
+  alert: false
+  console: false
+  exports: false
+  fetch: false
+  global: false
+  require: false
+  setTimeout: false
+  document: false
+  describe: false
+  it: false
+  before: false
+  beforeEach: false
+  after: false
+  afterEach: false
+  expect: false
