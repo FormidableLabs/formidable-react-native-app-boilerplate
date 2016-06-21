@@ -1,15 +1,16 @@
 /* @flow */
 /*eslint-disable prefer-const */
 
-import React from "react-native";
+import React from "react";
 
-let {
+import {
+  PixelRatio,
   StatusBarIOS,
   StyleSheet,
   Text,
   TouchableOpacity,
   View
-} = React;
+} from "react-native";
 
 const NAV_BAR_HEIGHT = 44;
 const STATUS_BAR_HEIGHT = 20;
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     paddingBottom: 5,
     borderBottomColor: "rgba(0, 0, 0, 0.5)",
-    borderBottomWidth: 1 / React.PixelRatio.get()
+    borderBottomWidth: 1 / PixelRatio.get()
   },
   navBar: {
     height: NAV_HEIGHT,
@@ -63,6 +64,25 @@ const styles = StyleSheet.create({
 });
 
 class NavigationBar extends React.Component {
+  static propTypes = {
+    backgroundStyle: React.PropTypes.object,
+    buttonsColor: React.PropTypes.string,
+    customNext: React.PropTypes.node,
+    customPrev: React.PropTypes.node,
+    customTitle: React.PropTypes.node,
+    hidePrev: React.PropTypes.bool,
+    navigator: React.PropTypes.object,
+    nextTitle: React.PropTypes.string,
+    onNext: React.PropTypes.func,
+    onPrev: React.PropTypes.func,
+    prevTitle: React.PropTypes.string,
+    route: React.PropTypes.object,
+    statusBar: React.PropTypes.string,
+    style: React.PropTypes.object,
+    title: React.PropTypes.string,
+    titleColor: React.PropTypes.string
+  };
+
   prevButtonShouldBeHidden(): Boolean {
     let {
       onPrev,
@@ -77,6 +97,7 @@ class NavigationBar extends React.Component {
       (getCurrentRoutes && getCurrentRoutes().length <= 1 && !onPrev)
     );
   }
+
   getLeftButtonElement() {
     let {
       onPrev,
@@ -113,6 +134,7 @@ class NavigationBar extends React.Component {
       </TouchableOpacity>
     );
   }
+
   getTitleElement() {
     let {
       title,
@@ -146,6 +168,7 @@ class NavigationBar extends React.Component {
       </Text>
     );
   }
+
   getRightButtonElement() {
     let {
       onNext,
@@ -176,6 +199,7 @@ class NavigationBar extends React.Component {
       </TouchableOpacity>
     );
   }
+
   render() {
     if (this.props.statusBar === "lightContent") {
       StatusBarIOS.setStyle("light-content", false);
@@ -196,24 +220,5 @@ class NavigationBar extends React.Component {
     );
   }
 }
-
-NavigationBar.propTypes = {
-  backgroundStyle: React.PropTypes.object,
-  buttonsColor: React.PropTypes.string,
-  customNext: React.PropTypes.node,
-  customPrev: React.PropTypes.node,
-  customTitle: React.PropTypes.node,
-  hidePrev: React.PropTypes.bool,
-  navigator: React.PropTypes.object,
-  nextTitle: React.PropTypes.string,
-  onNext: React.PropTypes.func,
-  onPrev: React.PropTypes.func,
-  prevTitle: React.PropTypes.string,
-  route: React.PropTypes.object,
-  statusBar: React.PropTypes.string,
-  style: React.PropTypes.object,
-  title: React.PropTypes.string,
-  titleColor: React.PropTypes.string
-};
 
 export default NavigationBar;

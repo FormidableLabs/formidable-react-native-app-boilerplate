@@ -1,14 +1,14 @@
 /* @flow */
 /*eslint-disable prefer-const */
 
-import React from "react-native";
+import React from "react";
 import App from "../containers/app";
 import NavigationBar from "./navigation-bar";
 
-let {
+import {
   Navigator,
   View
-} = React;
+} from "react-native";
 
 class Scene extends React.Component {
   renderScene(route: Object, navigator: Object) {
