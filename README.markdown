@@ -40,3 +40,7 @@ To type check your code using [Flow](flowtype.org), first [install Flow](http://
 #### Troubleshooting
 
 If you have any trouble with package caching due to `.babelrc`, run `rm -fr $TMPDIR/react-*`
+
+#### Maintenance Status
+
+**Archived:** This project is no longer maintained by Formidable. We are no longer responding to issues or pull requests unless they relate to security concerns. We encourage interested developers to fork this project and make it their own!
